@@ -7,7 +7,7 @@ const ListHeader =()=>{
 			<td>Action</td>
 		</tr>
 	)
-}
+} 
 
 
 export default ListHeader;
