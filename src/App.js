@@ -23,6 +23,8 @@ class App extends Component {
           />
             <List list={this.state.todos}
             toggleTask={this.toggleTask.bind(this)}
+            saveTask={this.saveTask.bind(this)}
+            deleteTask={this.deleteTask.bind(this)}
           />
           
         </header>
@@ -51,9 +53,24 @@ class App extends Component {
     })
   }
 
-  saveTask(task){}
+  saveTask(oldTask,newTask){
+    const foundTodo=_.find(
+      this.state.todos,
+      todo=>todo.task === oldTask
+    );
 
-  deleteTask(task){}
+    foundTodo.task=newTask ;
+    this.setState({
+      todos:this.state.todos
+    });
+  }
+
+  deleteTask(task){
+    _.remove(this.state.todos,todo=>todo.task===task);
+    this.setState({
+      todos:this.state.todos
+    })
+  }
 }
 
 
